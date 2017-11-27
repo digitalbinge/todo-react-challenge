@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import ToDos from './components/todo-list'
 import toDos from './data';
-import { Container, Row, Col, ListGroup, ListGroupItem, Badge } from 'reactstrap';
+import { Jumbotron } from 'reactstrap';
+
+function Heading(props) {
+	return (    		
+		<div>
+    		<h1>{props.head}</h1>
+    		<h2>{props.sub}</h2>
+  	</div>
+	)
+}
 
 class App extends Component {
   render() {
     return (
-      <ul>
-        {toDos.map(item => (
-          <li>{ item }</li>
-        ))}
-      </ul>
+    	<div className="container">
+	    	<Jumbotron>
+		    	<div className="heading">
+						<Heading head="My Todo list" />
+						<Heading sub="Things I need to get done!" />
+					</div>
+				</Jumbotron>
+				<ToDos tasks={toDos}/>
+      </div>
     );
   }
 }
